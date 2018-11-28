@@ -56,29 +56,6 @@ class curl {
 		return $data;
 	}
 }
-function cdy($url, $post_fields = null) {
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    if ($post_fields && !empty($post_fields)) {
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
-    }
-	$headers = array();
-	$auth = file('auth-c.txt'); 
-$headers[] = "Authorization: ".$auth[0]."";
-$headers[] = "Content-type: application/json;charset=UTF-8";
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    $data = curl_exec($ch);
-    if (curl_errno($ch)) {
-        echo 'Error:' . curl_error($ch);
-    }
-    curl_close($ch);
-    return $data;
-}
 $curl = new curl();
 $curl->ssl(0, 2);
 $headers = array();
@@ -107,11 +84,8 @@ while (true) {
 $today = date('Y-m-d');
 if($vocexp > $today){
 			if($use[1][0] =="null"){
-				$url = "https://api.gift.id/v1/egifts/msite_redemption/".$type."/".$asw."";
-$post_fields = '{"terminalId":"external"}';
-$dat = cdy($url, $post_fields); $c = json_decode($dat);
-							echo "MANTAP KALI => [".$c->external_number->number."] ".$codes[1][0]." ".$asw." (".$bl[1][0].")  ".$x[1][2]."";
-$data =  "".$c->external_number->number." / ".$codes[1][0]." / ".$bl[1][0]." / ".$asw." / ".$x[1][2]." / \r\n";
+							echo "MANTAP KALI => ".$codes[1][0]." ".$asw." (".$bl[1][0].")  ".$x[1][2]."";
+$data =  "".$codes[1][0]." / ".$bl[1][0]." / ".$asw." / ".$x[1][2]." / \r\n";
 		$fh = fopen("".$code."_".$type.".txt", "a");
 		fwrite($fh, $data);
 		fclose($fh);
