@@ -77,6 +77,7 @@ $curl->ssl(0, 2);
 $headers = array();
 $headers[] = "Authorization: Basic cE0wNjMyMm5uQUhEU2VpZHpUdkFOczVIMzpVeWdJZHR6VXEzVlNjb1Y3RThXVW9ub1RDaWg1QmdwYnNsdjZPcHNKTzlFQWtMSEV5VQ==";
 $curl->header($headers);	
+$i =-1;
 while (true) {
 	if($type == 1){
 		$type = 8346;
@@ -120,7 +121,7 @@ $data =  "".$tada[1][1]." / ".$bl[1][0]." / ".$asw." / ".$x[1][2]." / \r\n";
 }
 	} elseif (stripos($page, 'eVoucher not found')) {
 		if($die == 1){
-		echo "DIE => ".$asw;		echo "\n";	
+		echo "".i."DIE => ".$asw;		echo "\n";	
 		}
 		flush();
 		ob_flush();
@@ -136,6 +137,6 @@ time_nanosleep(0, 300000000);
 		echo "ERROR : ".$asw;
 		echo "\n";		flush();
 		ob_flush();
-	} 
+	} $i++;
 }
 ?>
