@@ -78,7 +78,6 @@ $headers = array();
 $headers[] = "Authorization: Basic cE0wNjMyMm5uQUhEU2VpZHpUdkFOczVIMzpVeWdJZHR6VXEzVlNjb1Y3RThXVW9ub1RDaWg1QmdwYnNsdjZPcHNKTzlFQWtMSEV5VQ==";
 $curl->header($headers);	
 while (true) {
-	$type = 1; // 1 tokped || 2 alfa
 	if($type == 1){
 		$type = 8346;
 	}else{
